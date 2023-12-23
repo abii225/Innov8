@@ -3,6 +3,8 @@ import "../App.css";
 import { useRecordWebcam } from "react-record-webcam";
 import { Link } from "react-router-dom";
 import { initialState, reducer } from "../ContextApi/Reducer";
+import SpeechRecognition from "react-speech-recognition";
+import SpeechRecognitionComponent from "../Components/SpeechRecognitionComponent";
 
 const Interview: React.FC = () => {
   const {
@@ -17,6 +19,8 @@ const Interview: React.FC = () => {
   const [videoId, setVideoId] = useState<string>("");
   const [start, setStart] = useState<boolean>(true);
   const [state, dispatch] = useReducer<any>(reducer, initialState);
+  const [transcript, setTranscript] = useState<string>("");
+  const [isRecording, setIsRecording] = useState<boolean>(false);
 
   // console.log(state, dispatch, "heeeyyyyy");
   // const [preview, setPreview] = useState<boolean>(false);
@@ -43,6 +47,7 @@ const Interview: React.FC = () => {
       console.error({ error });
     }
   };
+
   useEffect(() => {
     console.log("video id is :" + videoId, "\n", typeof videoId);
   }, [videoId]);
@@ -80,7 +85,7 @@ const Interview: React.FC = () => {
                     {/* <p>Preview</p>
                     
                     <video ref={recording.previewRef} autoPlay loop /> */}
-                    <Link to={`/preview`}> show preview</Link>
+                    {/* <Link to={`/preview`}> show preview</Link> */}
                   </div>
                 </div>
               ))}
@@ -140,9 +145,10 @@ const Interview: React.FC = () => {
         </div>
       </div>
       {/* preview section */}
-      <div className="rounded-lg ">
-        <div key="previewss" className="m-auto">
-          <div className="demo size-full size-3/5d m-auto">
+      <div className="rounded-lg mt-32">
+        <h1 className="text-cyan-950 text-center text-4xl">Preview</h1>
+        <div key="previewss">
+          <div className="">
             <div className="recordings">
               {activeRecordings.map((recording) => (
                 <div key={recording.id}>
@@ -152,7 +158,6 @@ const Interview: React.FC = () => {
                       recording.status === "STOPPED" ? "preview show" : "hide"
                     }
                     style={{
-                      backgroundColor: "green",
                       width: "900px",
                     }}
                   >
@@ -175,6 +180,7 @@ const Interview: React.FC = () => {
         </div>
         <div key="graph" className="">
           graph
+          {/*  */}
         </div>
       </div>
     </>
