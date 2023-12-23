@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +39,47 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  max-height: 50vh;
+}
+
+h4 {
+  margin: 5px 0;
+}
+
+small {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+button.selected {
+  background-color: #f00;
+  color: #fff;
+}
+
+.demo {
+  width: inherit;
+  height: inherit;
+}
+
+.recordings {
+  display: flex;
+  margin: 10px 0;
+}
+
+.hide {
+  visibility: hidden;
 }
